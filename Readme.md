@@ -5,7 +5,7 @@
 DeFi is powerful, but it's often a "choose your own adventure" for users, requiring them to manually manage their positions across different protocols. This is inefficient, risky, and a barrier to entry for many. Structured products, which are pre-packaged financial instruments, solve this problem in traditional finance by offering a single, easy-to-use product that automates a specific strategy (e.g., a covered call on an asset). On Aptos, while there are individual primitives (like lending protocols and DEXes), there's a lack of a comprehensive, on-chain marketplace for these automated strategies.
 
 ## Project Solution: Aptos Vaults
-We will build "Aptos Vaults," a decentralized structured products platform. Users can deposit a single asset (like APT or a stablecoin) into a vault, and the smart contract will automatically execute a complex, pre-defined DeFi strategy on their behalf to generate a yield. Think of it as a DeFi "robo-advisor" on Aptos, providing automated, transparent, and secure yield generation.
+ "Aptos Vaults," a decentralized structured products platform. Users can deposit a single asset (like APT or a stablecoin) into a vault, and the smart contract will automatically execute a complex, pre-defined DeFi strategy on their behalf to generate a yield. Think of it as a DeFi "robo-advisor" on Aptos, providing automated, transparent, and secure yield generation.
 
 ## Why This Project is a "Blue Ocean" on Aptos
 While Aptos has a growing DeFi ecosystem with DEXes like LiquidSwap and lending protocols like Thala Labs and Aries Markets, there isn't a mature, dedicated platform for structured products. A successful hackathon project would be the first to truly integrate these primitives in a comprehensive way to offer something new.
