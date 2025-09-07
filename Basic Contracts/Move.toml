@@ -1,0 +1,16 @@
+[package]
+name = "vault_manager"
+version = "1.0.0"
+authors = []
+
+[addresses]
+vaults = "0x3929c0d4dde444c9158248424ba4d7dc8a555515651237b9ca0e0aaeac28d91d"
+
+[dev-addresses]
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-framework.git"
+rev = "testnet"
+subdir = "aptos-framework"
+
+[dev-dependencies]

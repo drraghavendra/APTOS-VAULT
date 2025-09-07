@@ -1,0 +1,58 @@
+frontend/
+├── src/
+│   ├── components/
+│   │   ├── common/
+│   │   │   ├── Header.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   ├── Layout.tsx
+│   │   │   └── WalletConnect.tsx
+│   │   ├── vaults/
+│   │   │   ├── VaultCard.tsx
+│   │   │   ├── VaultList.tsx
+│   │   │   ├── VaultDetail.tsx
+│   │   │   ├── DepositModal.tsx
+│   │   │   └── WithdrawModal.tsx
+│   │   ├── dashboard/
+│   │   │   ├── Portfolio.tsx
+│   │   │   ├── PerformanceChart.tsx
+│   │   │   └── TransactionHistory.tsx
+│   │   └── admin/
+│   │       ├── VaultCreator.tsx
+│   │       └── AdminPanel.tsx
+│   ├── pages/
+│   │   ├── index.tsx
+│   │   ├── vaults/
+│   │   │   ├── index.tsx
+│   │   │   └── [id].tsx
+│   │   ├── dashboard.tsx
+│   │   ├── admin.tsx
+│   │   └── 404.tsx
+│   ├── hooks/
+│   │   ├── useVaults.ts
+│   │   ├── useWallet.ts
+│   │   ├── useTransactions.ts
+│   │   └── useApi.ts
+│   ├── styles/
+│   │   ├── globals.css
+│   │   ├── components/
+│   │   │   ├── VaultCard.module.css
+│   │   │   └── Header.module.css
+│   │   └── pages/
+│   │       ├── Home.module.css
+│   │       └── Dashboard.module.css
+│   ├── utils/
+│   │   ├── api.ts
+│   │   ├── constants.ts
+│   │   ├── formatters.ts
+│   │   └── providers.ts
+│   ├── types/
+│   │   └── index.ts
+│   ├── contexts/
+│   │   ├── WalletContext.tsx
+│   │   └── AppContext.tsx
+│   └── lib/
+│       └── aptos.ts
+├── package.json
+├── next.config.js
+├── tsconfig.json
+└── tailwind.config.js

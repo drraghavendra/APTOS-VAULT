@@ -1,0 +1,102 @@
+module vaults::vault_token {
+    use std::signer;
+    use std::string;
+    use aptos_framework::token;
+    use aptos_framework::guid;
+    
+    const ERR_NOT_ADMIN: u64 = 1;
+    const ERR_TOKEN_EXISTS: u64 = 2;
+    
+    struct VaultTokenAdmin has key {
+        signer_cap: account::SignerCapability
+    }
+    
+    public fun initialize_vault_token(admin: &signer) {
+        let admin_addr = signer::address_of(admin);
+        if (!exists<VaultTokenAdmin>(admin_addr)) {
+            let (signer_cap, _) = account::create_resource_account(admin, b"vault-token-admin");
+            move_to(admin, VaultTokenAdmin { signer_cap });
+        }
+    }
+    
+    public fun create_vault_token(
+        admin: &signer,
+        vault_addr: address,
+        token_name: string::String,
+        token_symbol: string::String
+    ): address acquires VaultTokenAdmin {
+        assert!(exists<VaultTokenAdmin>(signer::address_of(admin)), ERR_NOT_ADMIN);
+        
+        let admin_cap = borrow_global<VaultTokenAdmin>(signer::address_of(admin));
+        let resource_signer = account::create_signer_with_capability(&admin_cap.signer_cap);
+        let resource_addr = signer::address_of(&resource_signer);
+        
+        // Create token with fixed supply that can be minted/burned by vault
+        let collection = string::utf8(b"Vault Shares");
+        let description = string::utf8(b"Represent shares in a yield vault");
+        
+        token::create_collection(
+            &resource_signer,
+            collection,
+            description,
+            string::utf8(b"https://aptos-vaults.com/token/"),
+            1, // Maximum of 1 token per account
+            vector[false, false, false] // Not mutable
+        );
+        
+        let token_uri = string::utf8(b"https://aptos-vaults.com/token/");
+        
+        token::create_token(
+            &resource_signer,
+            collection,
+            token_name,
+            description,
+            1, // Maximum supply (will be managed by vault)
+            0, // Current supply
+            token_uri,
+            signer::address_of(admin), // Vault admin as royalty recipient
+            0, // Royalty points
+            vector[true, true, true, true, true], // All permissions enabled
+            vector[false, false, false] // Not mutable
+        );
+        
+        resource_addr
+    }
+    
+    public fun mint_vault_token(
+        admin: &signer,
+        token_addr: address,
+        recipient: address,
+        amount: u64
+    ) acquires VaultTokenAdmin {
+        assert!(exists<VaultTokenAdmin>(signer::address_of(admin)), ERR_NOT_ADMIN);
+        
+        let admin_cap = borrow_global<VaultTokenAdmin>(signer::address_of(admin));
+        let resource_signer = account::create_signer_with_capability(&admin_cap.signer_cap);
+        
+        token::mint_token(
+            &resource_signer,
+            token_addr,
+            amount
+        );
+        
+        // Transfer to recipient
+        let token_id = token::create_token_id(token_addr, 1);
+        token::direct_transfer(&resource_signer, recipient, token_id, amount);
+    }
+    
+    public fun burn_vault_token(
+        admin: &signer,
+        token_addr: address,
+        from: address,
+        amount: u64
+    ) acquires VaultTokenAdmin {
+        assert!(exists<VaultTokenAdmin>(signer::address_of(admin)), ERR_NOT_ADMIN);
+        
+        let admin_cap = borrow_global<VaultTokenAdmin>(signer::address_of(admin));
+        let resource_signer = account::create_signer_with_capability(&admin_cap.signer_cap);
+        
+        let token_id = token::create_token_id(token_addr, 1);
+        token::burn_token(&resource_signer, from, token_id, amount);
+    }
+}

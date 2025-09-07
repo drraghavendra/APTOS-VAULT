@@ -1,0 +1,104 @@
+{
+  "name": "aptos-vaults-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for Aptos Vaults - Decentralized Structured Product Hub",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "analyze": "ANALYZE=true next build",
+    "export": "next export"
+  },
+  "dependencies": {
+    "next": "13.4.19",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "typescript": "5.1.6",
+    "@types/node": "20.5.0",
+    "@types/react": "18.2.21",
+    "@types/react-dom": "18.2.7",
+    "@aptos-labs/wallet-adapter-react": "^1.1.0",
+    "@aptos-labs/wallet-adapter-ant-design": "^1.1.0",
+    "antd": "^5.9.0",
+    "@ant-design/icons": "^5.2.6",
+    "axios": "^1.5.0",
+    "recharts": "^2.8.0",
+    "date-fns": "^2.30.0",
+    "lodash": "^4.17.21",
+    "react-query": "^3.39.3",
+    "react-hook-form": "^7.45.4",
+    "react-hot-toast": "^2.4.1",
+    "zustand": "^4.4.1",
+    "framer-motion": "^10.16.1",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^1.14.0",
+    "web3": "^1.10.0",
+    "ethers": "^6.8.0",
+    "js-cookie": "^3.0.5",
+    "nprogress": "^0.2.0",
+    "react-intersection-observer": "^9.5.2",
+    "react-virtualized-auto-sizer": "^1.0.20",
+    "react-window": "^1.8.8"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.197",
+    "@types/nprogress": "^0.2.0",
+    "@types/js-cookie": "^3.0.3",
+    "autoprefixer": "^10.4.15",
+    "postcss": "^8.4.29",
+    "tailwindcss": "^3.3.3",
+    "eslint": "8.47.0",
+    "eslint-config-next": "13.4.19",
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "@typescript-eslint/parser": "^6.4.0",
+    "jest": "^29.6.2",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/user-event": "^14.5.1",
+    "jest-environment-jsdom": "^29.6.2",
+    "ts-jest": "^29.1.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "keywords": [
+    "nextjs",
+    "react",
+    "aptos",
+    "blockchain",
+    "defi",
+    "vaults",
+    "crypto",
+    "web3"
+  ],
+  "author": "Aptos Vaults Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aptosvaults/frontend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aptosvaults/frontend/issues"
+  },
+  "homepage": "https://aptosvaults.com"
+}
